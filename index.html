@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAVINA - Saluran Virtual Perizinan</title>
+<style>
+:root{--primary:#0b5ed7;--primary2:#084298;--bg:#f5f7fb;--text:#172033;--muted:#667085;--card:#fff;--border:#e5e7eb;--success:#198754;--danger:#dc3545;--warning:#f59e0b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}.container{width:min(1180px,92%);margin:auto}.topbar{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}.nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--primary);text-decoration:none}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#42a5f5);display:grid;place-items:center;color:#fff;font-weight:900}.navlinks{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.navlinks button{border:0;background:transparent;padding:9px 11px;border-radius:9px;cursor:pointer;color:#344054}.navlinks button:hover{background:#eef4ff;color:var(--primary)}
+.hero{padding:55px 0 35px;background:linear-gradient(135deg,#eaf2ff,#fff)}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}.eyebrow{font-weight:800;color:var(--primary);letter-spacing:.08em;font-size:13px}.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.05;margin:12px 0}.hero p{font-size:18px;color:#475467;max-width:700px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{border:0;border-radius:10px;padding:12px 17px;font-weight:700;cursor:pointer}.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary2)}.btn-light{background:#fff;border:1px solid var(--border);color:#344054}.btn-danger{background:var(--danger);color:#fff}.btn-success{background:var(--success);color:#fff}.hero-card,.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 8px 28px rgba(16,24,40,.06)}.hero-card h3{margin-top:0}.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.quick div{padding:14px;border:1px solid var(--border);border-radius:12px}.section{padding:45px 0}.section h2{margin:0 0 8px}.muted{color:var(--muted)}.grid{display:grid;gap:16px}.grid-4{grid-template-columns:repeat(4,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.service{cursor:pointer}.service:hover{border-color:#a9c7ff;transform:translateY(-1px)}.icon{font-size:26px}.modal{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;padding:15px;z-index:50}.modal.show{display:flex}.modal-box{background:#fff;width:min(760px,100%);max-height:92vh;overflow:auto;border-radius:16px;padding:24px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:15px}.close{border:0;background:#f2f4f7;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:650;font-size:14px}.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid #d0d5dd;border-radius:9px;font:inherit;background:#fff}.field textarea{min-height:95px;resize:vertical}.help{font-size:12px;color:var(--muted)}.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.slot{border:1px solid var(--border);background:#fff;border-radius:9px;padding:10px;cursor:pointer;text-align:center}.slot.selected{border:2px solid var(--primary);background:#eef4ff}.slot.disabled{opacity:.45;cursor:not-allowed}.alert{padding:12px 14px;border-radius:10px;margin:10px 0}.alert.success{background:#e9f8ef;color:#146c43}.alert.error{background:#fdecec;color:#b42318}.alert.info{background:#eef4ff;color:#1849a9}.status{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700;background:#eef2f6}.status.Selesai{background:#e8f7ee;color:#146c43}.status.Dikonfirmasi{background:#eaf2ff;color:#1849a9}.status.Menunggu{background:#fff4db;color:#8a5a00}.status.Dibatalkan{background:#fdecec;color:#b42318}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:18px;border:1px solid var(--border);border-radius:14px;background:#fff}.stat b{display:block;font-size:28px;margin-top:5px}.review{height:100%}.stars{color:#f59e0b;letter-spacing:2px}.footer{background:#101828;color:#d0d5dd;padding:35px 0;margin-top:30px}.hidden{display:none!important}.toast{position:fixed;right:18px;bottom:18px;z-index:100;min-width:250px;max-width:420px}.loading{opacity:.65;pointer-events:none}.admin-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}.admin-tabs button{padding:9px 12px;border:1px solid var(--border);background:#fff;border-radius:9px;cursor:pointer}.admin-tabs button.active{background:#eef4ff;color:var(--primary);border-color:#a9c7ff}
+@media(max-width:850px){.hero-grid,.grid-4,.grid-3,.stats{grid-template-columns:1fr 1fr}.navlinks{display:none}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:560px){.hero-grid,.grid-4,.grid-3,.stats,.slot-grid{grid-template-columns:1fr}.hero{padding-top:35px}.container{width:min(94%,1180px)}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="#" onclick="go('home');return false"><span class="logo">S</span><span>SAVINA<br><small>Saluran Virtual Perizinan</small></span></a>
+<nav class="navlinks">
+<button onclick="go('home')">Beranda</button><button onclick="openBooking()">Booking</button><button onclick="openCheck()">Cek Booking</button><button onclick="go('guide')">Panduan</button><button onclick="go('survey')">Survey</button><button onclick="openAdmin()">Admin</button>
+</nav></div></header>
+
+<main>
+<section id="view-home" class="view">
+<div class="hero"><div class="container hero-grid">
+<div><div class="eyebrow">LAYANAN PENDAMPINGAN PERIZINAN DIGITAL</div><h1>Urus perizinan lebih mudah bersama SAVINA.</h1><p>Pendampingan perizinan secara virtual untuk membantu pelaku usaha dan masyarakat memahami proses, menyiapkan data, dan menyelesaikan kendala.</p><div class="actions"><button class="btn btn-primary" onclick="openBooking()">📅 Booking Pendampingan</button><button class="btn btn-light" onclick="openCheck()">🔎 Cek Booking</button></div></div>
+<div class="hero-card"><h3>Butuh bantuan?</h3><p class="muted">Pilih kebutuhan Anda dan kami arahkan ke layanan yang sesuai.</p><div class="quick"><div onclick="openBooking('Konsultasi Umum')">💬<br><b>Konsultasi</b></div><div onclick="openBooking('OSS')">🧾<br><b>OSS / NIB</b></div><div onclick="openBooking('SIMBG')">🏗️<br><b>SIMBG</b></div><div onclick="go('guide')">📚<br><b>Panduan</b></div></div></div>
+</div></div>
+<div class="section"><div class="container"><h2>Layanan SAVINA</h2><p class="muted">Pendampingan untuk kebutuhan perizinan yang tersedia.</p><div id="serviceList" class="grid grid-4"></div></div></div>
+<div class="section" style="padding-top:0"><div class="container"><h2>Bagaimana kami dapat membantu?</h2><div class="grid grid-4">
+<div class="card service" onclick="openBooking()"><div class="icon">🆕</div><b>Saya ingin mengurus izin</b><p class="muted">Mulai booking pendampingan.</p></div>
+<div class="card service" onclick="openBooking()"><div class="icon">⚠️</div><b>Saya mengalami kendala</b><p class="muted">Ceritakan kendala Anda.</p></div>
+<div class="card service" onclick="openBooking('Konsultasi Umum')"><div class="icon">💬</div><b>Saya ingin konsultasi</b><p class="muted">Diskusikan kebutuhan perizinan.</p></div>
+<div class="card service" onclick="openBooking('Konsultasi Umum')"><div class="icon">❓</div><b>Tidak tahu izin yang diperlukan</b><p class="muted">Kami bantu mengarahkan.</p></div>
+</div></div></div>
+<div class="section" style="padding-top:0"><div class="container"><div class="card"><div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap"><div><h2 style="margin:0">⭐ Kepuasan Masyarakat</h2><p class="muted">Ulasan yang telah dimoderasi admin.</p></div><div id="avgRating" style="font-size:30px;font-weight:800">-</div></div><div id="reviews" class="grid grid-3" style="margin-top:15px"></div></div></div></div>
+</section>
+
+<section id="view-guide" class="view hidden"><div class="section"><div class="container"><h2>📚 Panduan Perizinan</h2><p class="muted">Informasi singkat untuk membantu Anda sebelum booking.</p><div id="guideList" class="grid grid-3"></div></div></div></section>
+
+<section id="view-survey" class="view hidden"><div class="section"><div class="container" style="max-width:800px"><div class="card"><h2>⭐ Survey & Ulasan</h2><p class="muted">Isi survey setelah layanan SAVINA selesai.</p><form id="surveyForm"><div class="form-grid">
+<div class="field full"><label>Kode Booking *</label><input id="sCode" required placeholder="Contoh SAV-260930-0001"></div>
+<div class="field"><label>Nilai Kepuasan *</label><select id="sRating" required><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label>Kemudahan layanan</label><select id="sEase"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label>Kecepatan layanan</label><select id="sSpeed"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label>Kejelasan informasi</label><select id="sClarity"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label>Petugas</label><select id="sOfficer"><option value="">Pilih</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field full"><label>Ulasan / Saran</label><textarea id="sReview" placeholder="Tuliskan pengalaman atau saran Anda"></textarea></div>
+</div><div id="surveyMsg"></div><button class="btn btn-primary" type="submit">Kirim Survey</button></form></div></div></div></section>
+
+<section id="view-admin" class="view hidden"><div class="section"><div class="container"><div id="adminLogin" class="card" style="max-width:480px;margin:auto"><h2>🔐 Admin SAVINA</h2><p class="muted">Masukkan kunci admin.</p><input id="adminKey" type="password" placeholder="Admin key" style="width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:9px"><div id="adminMsg"></div><button class="btn btn-primary" style="margin-top:10px" onclick="adminLogin()">Masuk</button></div>
+<div id="adminPanel" class="hidden"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><h2>Dashboard Admin</h2><p class="muted">Kelola booking, jadwal, layanan dan survey.</p></div><button class="btn btn-light" onclick="adminLogout()">Keluar</button></div>
+<div id="adminStats" class="stats" style="margin:15px 0"></div>
+<div class="admin-tabs"><button class="active" onclick="adminTab('booking',this)">Booking</button><button onclick="adminTab('schedule',this)">Jadwal</button><button onclick="adminTab('reviews',this)">Ulasan</button></div>
+<div id="adminContent"></div></div></div></div></section>
+</main>
+
+<footer class="footer"><div class="container"><b>SAVINA — Saluran Virtual Perizinan</b><p>Digitalisasi layanan pendampingan perizinan untuk masyarakat dan pelaku usaha.</p><small>© <span id="year"></span> SAVINA</small></div></footer>
+
+<div id="modal" class="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Form</h2><button class="close" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbxIJDqtifJdThjNZyck8mD8HfM_K5Jo5GJkdcBFB7zVLtzfC-agO5nwz6aOXQ6PCfEt/exec";
+let DATA={services:[],schedules:[],reviews:[],guides:[],stats:{}}, adminToken="";
+window.addEventListener("error", function(e){
+  console.error("SAVINA JavaScript Error:", e.error || e.message);
+  const t = document.getElementById("toast");
+  if (t) {
+    t.innerHTML =
+      '<div class="alert error">Terjadi kesalahan pada aplikasi. Silakan refresh halaman.</div>';
+  }
+});
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+const money=x=>x;
+function toast(msg,type="info"){const el=$("toast");el.innerHTML='<div class="alert '+type+'">'+esc(msg)+'</div>';setTimeout(()=>el.innerHTML="",4500)}
+async function api(action,data={}){
+ if(API_URL.includes("GANTI_DENGAN")){toast("URL Web App Apps Script belum dipasang di index.html.","error");throw new Error("API URL belum diset")}
+ const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action,...data})});
+ const j=await r.json(); if(!j.ok) throw new Error(j.message||"Terjadi kesalahan"); return j;
+}
+function go(name){document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden"));$("view-"+name).classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
+function openModal(title,body){$("modalTitle").textContent=title;$("modalBody").innerHTML=body;$("modal").classList.add("show")}
+function closeModal(){$("modal").classList.remove("show")}
+function openCheck(){openModal("🔎 Cek Booking",`<form onsubmit="checkBooking(event)"><div class="field"><label>Kode Booking</label><input id="checkCode" required placeholder="SAV-260930-0001"></div><button class="btn btn-primary" style="margin-top:12px">Cek Status</button></form><div id="checkResult"></div>`)}
+async function checkBooking(e){
+  e.preventDefault();
+  const box = $("checkResult");
+  box.innerHTML = '<div class="alert info">Memuat...</div>';
+
+  try {
+    const r = await api("getBooking", {
+      code: $("checkCode").value.trim()
+    });
+
+    const b = r.booking;
+
+    let html = `
+      <div class="card" style="margin-top:15px">
+        <h3>${esc(b.nama)}</h3>
+        <p><b>Kode:</b> ${esc(b.kode)}</p>
+        <p><b>Layanan:</b> ${esc(b.layanan)}</p>
+        <p><b>Jadwal:</b> ${esc(b.tanggal)} ${esc(b.jam)}</p>
+        <p><b>Status:</b>
+          <span class="status ${esc(b.status)}">${esc(b.status)}</span>
+        </p>
+    `;
+
+    if (b.petugas) {
+      html += `<p><b>Petugas:</b> ${esc(b.petugas)}</p>`;
+    }
+
+    if (b.meet) {
+      html += `
+        <p>
+          <a class="btn btn-success"
+             href="${esc(b.meet)}"
+             target="_blank"
+             rel="noopener">
+             🎥 Gabung Google Meet
+          </a>
+        </p>
+      `;
+    }
+
+    if (b.status === "Selesai") {
+      html += `
+        <button
+          class="btn btn-primary"
+          type="button"
+          onclick="closeModal();go('survey');setSurveyCode('${esc(b.kode)}')">
+          ⭐ Isi Survey
+        </button>
+      `;
+    }
+
+    html += `</div>`;
+    box.innerHTML = html;
+
+  } catch (err) {
+    box.innerHTML =
+      '<div class="alert error">' +
+      esc(err.message) +
+      '</div>';
+  }
+}
+
+function setSurveyCode(code){
+  go("survey");
+  if ($("sCode")) {
+    $("sCode").value = code;
+  }
+}
+function isActive(x){return String(x.aktif??"TRUE").trim().toUpperCase()!=="FALSE"}
+function serviceDate(x){return String(x.tanggal??"").trim().slice(0,10)}
+function openBooking(prefill=""){const services=DATA.services.filter(isActive);const opts=services.map(x=>`<option ${x.nama===prefill?"selected":""}>${esc(x.nama)}</option>`).join("");openModal("📅 Booking Pendampingan",`<form id="bookingForm" onsubmit="submitBooking(event)"><div class="form-grid">
+<div class="field"><label>Nama Lengkap *</label><input id="bNama" required></div><div class="field"><label>WhatsApp *</label><input id="bHp" required placeholder="08xxxxxxxxxx"></div>
+<div class="field"><label>Email</label><input id="bEmail" type="email"></div><div class="field"><label>Jenis Pemohon</label><select id="bJenis"><option>Pelaku Usaha</option><option>Masyarakat</option><option>Badan Usaha</option></select></div>
+<div class="field"><label>Nama Usaha</label><input id="bUsaha"></div><div class="field"><label>NIB (jika ada)</label><input id="bNib"></div>
+<div class="field full"><label>Layanan *</label><select id="bLayanan" required>${opts||"<option>Konsultasi Umum</option>"}</select></div>
+<div class="field full"><label>Kendala / kebutuhan pendampingan *</label><textarea id="bKendala" required placeholder="Jelaskan kendala atau kebutuhan Anda"></textarea></div>
+<div class="field full"><label>Pilih tanggal</label><input id="bTanggal" type="date" required onchange="renderSlots()"><div id="slots" class="slot-grid"></div><input id="bJam" type="hidden" required></div>
+<div class="field full"><label>Link dokumen pendukung (opsional)</label><input id="bDoc" placeholder="Link Google Drive/OneDrive, jika ada"><span class="help">Untuk keamanan dan kesederhanaan versi awal, dokumen dapat dikirim melalui link.</span></div>
+</div><div id="bookingMsg"></div><button class="btn btn-primary" type="submit">Kirim Booking</button></form>`);const d=new Date();d.setDate(d.getDate()+1);$("bTanggal").min=d.toISOString().slice(0,10)}
+function renderSlots(){const date=$("bTanggal").value;const box=$("slots");$("bJam").value="";if(!date){box.innerHTML="";return}const rows=DATA.schedules.filter(x=>serviceDate(x)===date && String(x.status??"").trim().toLowerCase()!=="tutup" && Number(x.terisi||0)<Number(x.kuota||0));box.innerHTML=rows.length?rows.map(x=>`<button type="button" class="slot" onclick="selectSlot(this,'${esc(x.jam)}')">${esc(x.jam)}<br><small>Sisa ${Number(x.kuota)-Number(x.terisi)}</small></button>`).join(""):'<div class="alert info" style="grid-column:1/-1">Tidak ada slot tersedia pada tanggal tersebut.</div>'}
+function selectSlot(el,jam){document.querySelectorAll(".slot").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");$("bJam").value=jam}
+async function submitBooking(e){e.preventDefault();const msg=$("bookingMsg");if(!$("bJam").value){msg.innerHTML='<div class="alert error">Silakan pilih jam pendampingan.</div>';return}msg.innerHTML='<div class="alert info">Mengirim booking...</div>';try{const r=await api("createBooking",{booking:{nama:$("bNama").value,hp:$("bHp").value,email:$("bEmail").value,jenis:$("bJenis").value,usaha:$("bUsaha").value,nib:$("bNib").value,layanan:$("bLayanan").value,kendala:$("bKendala").value,tanggal:$("bTanggal").value,jam:$("bJam").value,dokumen:$("bDoc").value}});msg.innerHTML=`<div class="alert success"><b>Booking berhasil!</b><br>Kode Booking: <strong>${esc(r.booking.kode)}</strong><br>Status: ${esc(r.booking.status)}<br>Simpan kode ini untuk mengecek booking.</div>`;document.getElementById("bookingForm").reset();$("slots").innerHTML="";}catch(err){msg.innerHTML='<div class="alert error">'+esc(err.message)+'</div>'}}
+async function submitSurvey(e){e.preventDefault();$("surveyMsg").innerHTML='<div class="alert info">Mengirim...</div>';try{const r=await api("submitSurvey",{survey:{kode:$("sCode").value.trim(),rating:$("sRating").value,ease:$("sEase").value,speed:$("sSpeed").value,clarity:$("sClarity").value,officer:$("sOfficer").value,review:$("sReview").value}});$("surveyMsg").innerHTML='<div class="alert success">Terima kasih. Survey berhasil disimpan.</div>';e.target.reset();await loadData()}catch(err){$("surveyMsg").innerHTML='<div class="alert error">'+esc(err.message)+'</div>'}}
+$("surveyForm").addEventListener("submit",submitSurvey);
+function renderHome(){ $("serviceList").innerHTML=(DATA.services||[]).filter(isActive).map(x=>`<div class="card service" onclick="openBooking('${esc(x.nama)}')"><div class="icon">${esc(x.icon||"📌")}</div><h3>${esc(x.nama)}</h3><p class="muted">${esc(x.deskripsi||"Layanan pendampingan SAVINA")}</p></div>`).join("");$("reviews").innerHTML=(DATA.reviews||[]).slice(0,6).map(x=>`<div class="card review"><div class="stars">${"★".repeat(Number(x.rating||0))}${"☆".repeat(5-Number(x.rating||0))}</div><p>${esc(x.ulasan||"Tidak ada komentar.")}</p><small class="muted">${esc(x.nama||"Masyarakat")}</small></div>`).join("")||'<p class="muted">Belum ada ulasan.</p>';$("avgRating").textContent=DATA.stats?.avgRating?Number(DATA.stats.avgRating).toFixed(2)+"/5":"-";$("guideList").innerHTML=(DATA.guides||[]).map(x=>`<div class="card"><h3>${esc(x.judul)}</h3><p class="muted">${esc(x.isi)}</p>${x.link?`<a href="${esc(x.link)}" target="_blank" rel="noopener">Baca selengkapnya →</a>`:""}</div>`).join("")||'<p class="muted">Panduan belum tersedia.</p>'}
+async function loadData(){try{DATA=await api("getPublicData");renderHome()}catch(e){console.error("getPublicData:",e);toast("Data layanan/jadwal gagal dimuat: "+e.message,"error")}}
+function openAdmin(){go("admin");if(adminToken)loadAdmin("booking")}
+async function adminLogin(){const key=$("adminKey").value;if(!key)return;try{const r=await api("adminLogin",{key});adminToken=r.token;$("adminLogin").classList.add("hidden");$("adminPanel").classList.remove("hidden");loadAdmin("booking")}catch(e){$("adminMsg").innerHTML='<div class="alert error">'+esc(e.message)+'</div>'}}
+function adminLogout(){adminToken="";$("adminPanel").classList.add("hidden");$("adminLogin").classList.remove("hidden")}
+async function loadAdmin(tab){try{const r=await api("adminData",{token:adminToken,tab});$("adminStats").innerHTML=[["Total Booking",r.stats.total],["Menunggu",r.stats.menunggu],["Selesai",r.stats.selesai],["Rating",Number(r.stats.avgRating||0).toFixed(2)+"/5"]].map(x=>`<div class="stat"><span class="muted">${x[0]}</span><b>${x[1]}</b></div>`).join("");const c=$("adminContent");if(tab==="booking")c.innerHTML=renderAdminBookings(r.bookings);if(tab==="schedule")c.innerHTML=renderAdminSchedules(r.schedules);if(tab==="reviews")c.innerHTML=renderAdminReviews(r.reviews)}catch(e){toast(e.message,"error")}}
+function adminTab(tab,el){document.querySelectorAll(".admin-tabs button").forEach(x=>x.classList.remove("active"));el.classList.add("active");loadAdmin(tab)}
+function renderAdminBookings(rows){return `<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Kode</th><th>Pemohon</th><th>Layanan</th><th>Jadwal</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${(rows||[]).map(b=>`<tr><td>${esc(b.kode)}</td><td>${esc(b.nama)}<br><small>${esc(b.hp)}</small></td><td>${esc(b.layanan)}</td><td>${esc(b.tanggal)}<br>${esc(b.jam)}</td><td><span class="status ${esc(b.status)}">${esc(b.status)}</span></td><td><button class="btn btn-light" onclick="adminDetail('${esc(b.kode)}')">Detail</button></td></tr>`).join("")}</tbody></table></div></div>`}
+function renderAdminSchedules(rows){return `<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Tanggal</th><th>Jam</th><th>Kuota</th><th>Terisi</th><th>Status</th></tr></thead><tbody>${(rows||[]).map(x=>`<tr><td>${esc(x.tanggal)}</td><td>${esc(x.jam)}</td><td>${esc(x.kuota)}</td><td>${esc(x.terisi)}</td><td>${esc(x.status)}</td></tr>`).join("")}</tbody></table></div></div>`}
+function renderAdminReviews(rows){return `<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Kode</th><th>Rating</th><th>Ulasan</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${(rows||[]).map(x=>`<tr><td>${esc(x.kode)}</td><td>${esc(x.rating)}</td><td>${esc(x.ulasan)}</td><td>${esc(x.status)}</td><td>${x.status==="Disetujui"?"":`<button class="btn btn-success" onclick="moderateReview('${esc(x.id)}','Disetujui')">Setujui</button>`}</td></tr>`).join("")}</tbody></table></div></div>`}
+async function adminDetail(code){try{const r=await api("getBooking",{code});const b=r.booking;openModal("Detail Booking",`<div class="card"><p><b>${esc(b.kode)}</b></p><p>${esc(b.nama)} — ${esc(b.hp)}</p><p>${esc(b.layanan)} | ${esc(b.tanggal)} ${esc(b.jam)}</p><p><b>Kendala:</b><br>${esc(b.kendala)}</p><div class="form-grid"><div class="field"><label>Status</label><select id="aStatus">${["Menunggu","Dikonfirmasi","Sedang Dilayani","Selesai","Dibatalkan"].map(s=>`<option ${s===b.status?"selected":""}>${s}</option>`).join("")}</select></div><div class="field"><label>Petugas</label><input id="aPetugas" value="${esc(b.petugas||"")}"></div><div class="field full"><label>Link Google Meet</label><input id="aMeet" value="${esc(b.meet||"")}"></div><div class="field full"><label>Catatan hasil pendampingan</label><textarea id="aCatatan">${esc(b.catatan||"")}</textarea></div></div><button class="btn btn-primary" style="margin-top:10px" onclick="saveBooking('${esc(b.kode)}')">Simpan Perubahan</button></div>`)}catch(e){toast(e.message,"error")}}
+async function saveBooking(code){try{await api("updateBooking",{token:adminToken,code,status:$("aStatus").value,petugas:$("aPetugas").value,meet:$("aMeet").value,catatan:$("aCatatan").value});closeModal();toast("Booking diperbarui.","success");loadAdmin("booking")}catch(e){toast(e.message,"error")}}
+async function moderateReview(id,status){try{await api("moderateReview",{token:adminToken,id,status});toast("Ulasan diperbarui.","success");loadAdmin("reviews");await loadData()}catch(e){toast(e.message,"error")}}
+$("year").textContent=new Date().getFullYear();
+loadData();
+</script>
+</body></html>
