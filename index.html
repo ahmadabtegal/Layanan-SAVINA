@@ -22,6 +22,22 @@ a{color:inherit}.container{width:min(1180px,92%);margin:auto}.topbar{background:
 @media(max-width:850px){.topbar .nav{align-items:flex-start;gap:10px;padding-top:10px;padding-bottom:10px}.brand{font-size:14px;line-height:1.35}.brand-logos img{width:32px;height:36px}.brand-logos img.dpm-logo{width:58px;height:32px}.navlinks{display:flex;flex-wrap:wrap;gap:4px}.navlinks button{padding:8px;font-size:13px}.admin-tabs{top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.admin-tabs button{min-width:0;padding:10px 6px;font-size:14px}.hero-org-logos img{height:48px}}
 @media(max-width:560px){.topbar .nav{display:block}.brand{margin-bottom:10px;max-width:100%}.brand-title{white-space:normal;font-size:14px}.brand-logos{gap:5px}.brand-logos img{width:30px;height:34px}.brand-logos img.dpm-logo{width:52px;height:29px}.navlinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}.navlinks button{padding:8px 3px;font-size:12px;white-space:normal}.admin-tabs{grid-template-columns:repeat(3,minmax(0,1fr));padding:7px}.admin-tabs button{font-size:13px;padding:9px 3px}.hero-org-logos{gap:12px}.hero-org-logos img{height:42px}.virtual-badge{font-size:13px;align-items:flex-start}.table-wrap{margin-right:-4px}}
 
+
+/* Alur layanan SAVINA */
+.savina-flow-section .muted{max-width:760px}
+.savina-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch;margin-top:24px}
+.savina-flow-step{position:relative;min-width:0;background:#fff;border:1px solid #e1e8f0;border-radius:18px;padding:22px 17px 20px;box-shadow:0 8px 24px rgba(24,54,90,.06);transition:transform .2s,box-shadow .2s}
+.savina-flow-step:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(24,54,90,.1)}
+.savina-flow-number{position:absolute;right:14px;top:12px;font-size:12px;font-weight:800;letter-spacing:.08em;color:#9aaec7}
+.savina-flow-icon{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,#e8f2ff,#dff8f2);font-size:26px;margin-bottom:15px}
+.savina-flow-step h3{font-size:16px;margin:0 0 9px;color:#17365d}
+.savina-flow-step p{font-size:13px;line-height:1.65;color:#64748b;margin:0}
+.savina-flow-connector{display:flex;align-items:center;justify-content:center;color:#168bba;font-size:22px;font-weight:800}
+.savina-flow-cta{margin-top:20px;padding:19px 22px;border-radius:16px;background:linear-gradient(105deg,#123d70,#087f8c);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.savina-flow-cta strong{font-size:17px}.savina-flow-cta p{margin:5px 0 0;color:#dcecf6}.savina-flow-cta .btn{border:0;border-radius:10px;padding:12px 18px;background:#fff;color:#12456d;font-weight:800;cursor:pointer;white-space:nowrap}
+@media(max-width:1100px){.savina-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.savina-flow-connector{display:none}.savina-flow-step:last-child{grid-column:1/-1}}
+@media(max-width:600px){.savina-flow{grid-template-columns:1fr}.savina-flow-step:last-child{grid-column:auto}.savina-flow-step{padding:18px}.savina-flow-cta{padding:18px}.savina-flow-cta .btn{width:100%}}
+
 </style>
 </head>
 <body>
@@ -74,13 +90,23 @@ a{color:inherit}.container{width:min(1180px,92%);margin:auto}.topbar{background:
 </div>
 
 <div class="section"><div class="container"><h2>Layanan SAVINA</h2><p class="muted">Pendampingan untuk kebutuhan perizinan yang tersedia.</p><div id="serviceList" class="grid grid-4"></div></div></div>
-<div class="section" style="padding-top:0"><div class="container"><h2>Bagaimana kami dapat membantu?</h2><div class="grid grid-4">
-<div class="card service" onclick="openBooking()"><div class="icon">🆕</div><b>Saya ingin mengurus izin</b><p class="muted">Mulai booking pendampingan.</p></div>
-<div class="card service" onclick="openBooking()"><div class="icon">⚠️</div><b>Saya mengalami kendala</b><p class="muted">Ceritakan kendala Anda.</p></div>
-<div class="card service" onclick="openBooking('Konsultasi Umum')"><div class="icon">💬</div><b>Saya ingin konsultasi</b><p class="muted">Diskusikan kebutuhan perizinan.</p></div>
-<div class="card service" onclick="openBooking('Konsultasi Umum')"><div class="icon">❓</div><b>Tidak tahu izin yang diperlukan</b><p class="muted">Kami bantu mengarahkan.</p></div>
-</div></div></div>
-<div class="section" style="padding-top:0"><div class="container"><div class="card"><div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap"><div><h2 style="margin:0">⭐ Kepuasan Masyarakat</h2><p class="muted"></p></div><div id="avgRating" style="font-size:30px;font-weight:800">-</div></div><div id="reviews" class="grid grid-3" style="margin-top:15px"></div></div></div></div>
+<div class="section savina-flow-section" style="padding-top:0"><div class="container">
+<h2>Alur Layanan SAVINA</h2>
+<p class="muted">Ikuti langkah mudah berikut untuk mendapatkan pendampingan perizinan dari DPMPTSP Kota Tegal.</p>
+<div class="savina-flow">
+  <div class="savina-flow-step"><div class="savina-flow-number">01</div><div class="savina-flow-icon">📝</div><h3>Pilih Layanan</h3><p>Tentukan jenis pendampingan atau konsultasi sesuai kebutuhan perizinan Anda.</p></div>
+  <div class="savina-flow-connector" aria-hidden="true">➜</div>
+  <div class="savina-flow-step"><div class="savina-flow-number">02</div><div class="savina-flow-icon">📅</div><h3>Booking Jadwal</h3><p>Isi data pemohon dan pilih jadwal layanan yang tersedia.</p></div>
+  <div class="savina-flow-connector" aria-hidden="true">➜</div>
+  <div class="savina-flow-step"><div class="savina-flow-number">03</div><div class="savina-flow-icon">✅</div><h3>Konfirmasi Admin</h3><p>Admin memeriksa permohonan dan memberikan informasi status booking.</p></div>
+  <div class="savina-flow-connector" aria-hidden="true">➜</div>
+  <div class="savina-flow-step"><div class="savina-flow-number">04</div><div class="savina-flow-icon">🤝</div><h3>Pendampingan</h3><p>Datang sesuai jadwal untuk memperoleh konsultasi atau pendampingan perizinan.</p></div>
+  <div class="savina-flow-connector" aria-hidden="true">➜</div>
+  <div class="savina-flow-step"><div class="savina-flow-number">05</div><div class="savina-flow-icon">⭐</div><h3>Selesai & Ulasan</h3><p>Layanan diselesaikan, lalu sampaikan penilaian untuk peningkatan kualitas layanan.</p></div>
+</div>
+<div class="savina-flow-cta"><div><strong>Siap mendapatkan pendampingan?</strong><p class="muted">Mulai dengan memilih layanan yang Anda butuhkan.</p></div><button type="button" class="btn btn-primary" onclick="openBooking()">Mulai Booking <span aria-hidden="true">→</span></button></div>
+</div></div>
+<div class="section" style="padding-top:0"><div class="container"><div class="card"><div style="display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap"><div><h2 style="margin:0">⭐ Ulasan Pengguna Layanan</h2><p class="muted"></p></div><div id="avgRating" style="font-size:30px;font-weight:800">-</div></div><div id="reviews" class="grid grid-3" style="margin-top:15px"></div></div></div></div>
 </section>
 
 <section id="view-guide" class="view hidden"><div class="section"><div class="container"><h2>📚 Panduan Layanan Pendampingan Perizinan</h2><p class="muted">Informasi singkat untuk membantu Anda sebelum booking.</p><div id="guideList" class="grid grid-3"></div></div></div></section>
@@ -214,7 +240,7 @@ function openBooking(prefill=""){const services=DATA.services.filter(x=>x.aktif!
 function isPastTodaySlot(date,jam){const today=new Date();const localDate=today.getFullYear()+"-"+String(today.getMonth()+1).padStart(2,"0")+"-"+String(today.getDate()).padStart(2,"0");if(date!==localDate)return false;const m=String(jam||"").match(/^(\d{1,2}):(\d{2})/);if(!m)return false;const start=new Date();start.setHours(Number(m[1]),Number(m[2]),0,0);return today>=start;}
 function renderSlots(){const date=$("bTanggal").value;const box=$("slots");$("bJam").value="";if(!date){box.innerHTML="";return}const rows=DATA.schedules.filter(x=>x.tanggal===date && String(x.status||"").toLowerCase()!=="tutup" && Number(x.terisi||0)<Number(x.kuota||0) && !isPastTodaySlot(date,x.jam));box.innerHTML=rows.length?rows.map(x=>`<button type="button" class="slot" onclick="selectSlot(this,'${esc(x.jam)}')">${esc(x.jam)}<br><small>Sisa ${Number(x.kuota)-Number(x.terisi)}</small></button>`).join(""):'<div class="alert info" style="grid-column:1/-1">Tidak ada slot tersedia pada tanggal tersebut.</div>'}
 function selectSlot(el,jam){document.querySelectorAll(".slot").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");$("bJam").value=jam}
-async function submitBooking(e){e.preventDefault();const msg=$("bookingMsg");if(!$("bJam").value){msg.innerHTML='<div class="alert error">Silakan pilih jam pendampingan.</div>';return}msg.innerHTML='<div class="alert info">Mengirim booking...</div>';try{const r=await api("createBooking",{booking:{nama:$("bNama").value,hp:$("bHp").value,email:$("bEmail").value,jenis:$("bJenis").value,usaha:$("bUsaha").value,nib:$("bNib").value,layanan:$("bLayanan").value,kendala:$("bKendala").value,tanggal:$("bTanggal").value,jam:$("bJam").value,dokumen:$("bDoc").value}});msg.innerHTML=`<div class="alert success"><b>Booking berhasil!</b><br>Kode Booking: <strong>${esc(r.booking.kode)}</strong><br>Status: ${esc(r.booking.status)}<br>Simpan kode ini untuk mengecek booking.</div>`;document.getElementById("bookingForm").reset();$("slots").innerHTML="";}catch(err){msg.innerHTML='<div class="alert error">'+esc(err.message)+'</div>'}}
+async function submitBooking(e){e.preventDefault();const msg=$("bookingMsg");if(!$("bJam").value){msg.innerHTML='<div class="alert error">Silakan pilih jam pendampingan.</div>';return}msg.innerHTML='<div class="alert info">Mengirim booking...</div>';try{const r=await api("createBooking",{booking:{nama:$("bNama").value,hp:$("bHp").value,email:$("bEmail").value,jenis:$("bJenis").value,usaha:$("bUsaha").value,nib:$("bNib").value,layanan:$("bLayanan").value,kendala:$("bKendala").value,tanggal:$("bTanggal").value,jam:$("bJam").value,dokumen:$("bDoc").value}});msg.innerHTML=`<div class="alert success"><b>Booking berhasil!</b><br>Kode Booking: <strong>${esc(r.booking.kode)}</strong><br>Status: ${esc(r.booking.status)}<br>Simpan kode ini untuk mengecek booking.</div>`;document.getElementById("bookingForm").reset();$("slots").innerHTML="";await loadData();}catch(err){msg.innerHTML='<div class="alert error">'+esc(err.message)+'</div>'}}
 async function submitSurvey(e){e.preventDefault();$("surveyMsg").innerHTML='<div class="alert info">Mengirim...</div>';try{const r=await api("submitSurvey",{survey:{kode:$("sCode").value.trim(),rating:$("sRating").value,ease:$("sEase").value,speed:$("sSpeed").value,clarity:$("sClarity").value,officer:$("sOfficer").value,review:$("sReview").value}});$("surveyMsg").innerHTML='<div class="alert success">Terima kasih. Survey berhasil disimpan.</div>';e.target.reset();await loadData()}catch(err){$("surveyMsg").innerHTML='<div class="alert error">'+esc(err.message)+'</div>'}}
 $("surveyForm").addEventListener("submit",submitSurvey);
 function renderPublicStats(){
